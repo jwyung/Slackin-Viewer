@@ -1,0 +1,823 @@
+#slackin-viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+#slackin-viewer.active {
+  display: block;
+}
+
+#slackin-viewer .centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+#slackin-viewer .ui-transition-opacity {
+  -webkit-transition: opacity 0.15s;
+  -moz-transition: opacity 0.15s;
+  transition: opacity 0.15s;
+  will-change: opacity;
+}
+
+#slackin-viewer .content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  float: left;
+}
+
+#slackin-viewer .controls {
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border: 0.2rem solid #fff;
+  border-radius: 0.25rem;
+  visibility: hidden;
+  cursor: pointer;
+}
+
+#slackin-viewer .controls.disabled {
+  opacity: 0.2;
+  box-shadow: none;
+  cursor: default;
+}
+
+#slackin-viewer .close .control-icons {
+  font-size: 1.25rem;
+}
+
+/******************** Mask ********************/
+
+#slackin-viewer .mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+
+#slackin-viewer.active .mask {
+  -webkit-animation: mask 0.3s forwards;
+  -moz-animation: mask 0.3s forwards;
+  animation: mask 0.3s forwards;
+}
+
+@-webkit-keyframes mask {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+@-moz-keyframes mask {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes mask {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+/******************** Viewer ********************/
+
+#slackin-viewer .viewer {
+  position: relative;
+  top: 50%;
+  left: 0;
+  -webkit-transform: translateY(-50%) rotate(-15deg);
+  -moz-transform: translateY(-50%) rotate(-15deg);
+  transform: translateY(-50%) rotate(-15deg);
+  text-align: center;
+}
+
+#slackin-viewer.active .viewer {
+  -webkit-animation: viewer 1.25s 0.2s forwards;
+  -moz-animation: viewer 1.25s 0.2s forwards;
+  animation: viewer 1.25s 0.2s forwards;
+}
+
+@-webkit-keyframes viewer {
+  0%, 50.1% {
+    -webkit-transform: translateY(-50%) rotate(-15deg);
+    -moz-transform: translateY(-50%) rotate(-15deg);
+    transform: translateY(-50%) rotate(-15deg);
+  }
+  75%, 100% {
+    -webkit-transform: translateY(-50%) rotate(0);
+    -moz-transform: translateY(-50%) rotate(0);
+    transform: translateY(-50%) rotate(0);
+  }
+}
+
+@-moz-keyframes viewer {
+  0%, 50.1% {
+    -webkit-transform: translateY(-50%) rotate(-15deg);
+    -moz-transform: translateY(-50%) rotate(-15deg);
+    transform: translateY(-50%) rotate(-15deg);
+  }
+  75%, 100% {
+    -webkit-transform: translateY(-50%) rotate(0);
+    -moz-transform: translateY(-50%) rotate(0);
+    transform: translateY(-50%) rotate(0);
+  }
+}
+
+@keyframes viewer {
+  0%, 50.1% {
+    -webkit-transform: translateY(-50%) rotate(-15deg);
+    -moz-transform: translateY(-50%) rotate(-15deg);
+    transform: translateY(-50%) rotate(-15deg);
+  }
+  75%, 100% {
+    -webkit-transform: translateY(-50%) rotate(0);
+    -moz-transform: translateY(-50%) rotate(0);
+    transform: translateY(-50%) rotate(0);
+  }
+}
+
+#slackin-viewer .viewer:before, 
+#slackin-viewer .viewer:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 0.25em;
+}
+
+#slackin-viewer.active .viewer:before {
+  -webkit-animation: logo-set-1 1.25s 0.2s forwards;
+  -moz-animation: logo-set-1 1.25s 0.2s forwards;
+  animation: logo-set-1 1.25s 0.2s forwards;
+}
+
+#slackin-viewer.active .viewer:after {
+  -webkit-animation: logo-set-2 1.25s 0.2s forwards;
+  -moz-animation: logo-set-2 1.25s 0.2s forwards;
+  animation: logo-set-2 1.25s 0.2s forwards;
+}
+
+@-webkit-keyframes logo-set-1 {
+  0% {
+    width: 0.5em;
+    box-shadow: 1em -0.5em rgba(90,191,213,0.75),
+                -1em 0.5em rgba(217,0,79,0.75);
+  }
+  25% {
+    width: 2.5em;
+    box-shadow: 0 -0.5em rgba(90,191,213,0.75),
+                0 0.5em rgba(217,0,79,0.75);
+  }
+  50% {
+    width: 0.5em;
+    box-shadow: -1em -0.5em rgba(90,191,213,0.75),
+                1em 0.5em rgba(217,0,79,0.75);
+    opacity: 1;
+  }
+  50.1%, 100% {
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes logo-set-1 {
+  0% {
+    width: 0.5em;
+    box-shadow: 1em -0.5em rgba(90,191,213,0.75),
+                -1em 0.5em rgba(217,0,79,0.75);
+  }
+  25% {
+    width: 2.5em;
+    box-shadow: 0 -0.5em rgba(90,191,213,0.75),
+                0 0.5em rgba(217,0,79,0.75);
+  }
+  50% {
+    width: 0.5em;
+    box-shadow: -1em -0.5em rgba(90,191,213,0.75),
+                1em 0.5em rgba(217,0,79,0.75);
+    opacity: 1;
+  }
+  50.1%, 100% {
+    opacity: 0;
+  }
+}
+@keyframes logo-set-1 {
+  0% {
+    width: 0.5em;
+    box-shadow: 1em -0.5em rgba(90,191,213,0.75),
+                -1em 0.5em rgba(217,0,79,0.75);
+  }
+  25% {
+    width: 2.5em;
+    box-shadow: 0 -0.5em rgba(90,191,213,0.75),
+                0 0.5em rgba(217,0,79,0.75);
+  }
+  50% {
+    width: 0.5em;
+    box-shadow: -1em -0.5em rgba(90,191,213,0.75),
+                1em 0.5em rgba(217,0,79,0.75);
+    opacity: 1;
+  }
+  50.1%, 100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes logo-set-2 {
+  0% {
+    height: 0.5em;
+    box-shadow: 0.5em 1em rgba(228,154,0,0.75),
+                -0.5em -1em rgba(48,175,126,0.75);
+  }
+  25% {
+    height: 2.5em;
+    box-shadow: 0.5em 0 rgba(228,154,0,0.75),
+                -0.5em 0 rgba(48,175,126,0.75);
+  }
+  50% {
+    height: 0.5em;
+    box-shadow: 0.5em -1em rgba(228,154,0,0.75),
+                -0.5em 1em rgba(48,175,126,0.75);
+    opacity: 1;
+  }
+  50.1%, 100% {
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes logo-set-2 {
+  0% {
+    height: 0.5em;
+    box-shadow: 0.5em 1em rgba(228,154,0,0.75),
+                -0.5em -1em rgba(48,175,126,0.75);
+  }
+  25% {
+    height: 2.5em;
+    box-shadow: 0.5em 0 rgba(228,154,0,0.75),
+                -0.5em 0 rgba(48,175,126,0.75);
+  }
+  50% {
+    height: 0.5em;
+    box-shadow: 0.5em -1em rgba(228,154,0,0.75),
+                -0.5em 1em rgba(48,175,126,0.75);
+    opacity: 1;
+  }
+  50.1%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes logo-set-2 {
+  0% {
+    height: 0.5em;
+    box-shadow: 0.5em 1em rgba(228,154,0,0.75),
+                -0.5em -1em rgba(48,175,126,0.75);
+  }
+  25% {
+    height: 2.5em;
+    box-shadow: 0.5em 0 rgba(228,154,0,0.75),
+                -0.5em 0 rgba(48,175,126,0.75);
+  }
+  50% {
+    height: 0.5em;
+    box-shadow: 0.5em -1em rgba(228,154,0,0.75),
+                -0.5em 1em rgba(48,175,126,0.75);
+    opacity: 1;
+  }
+  50.1%, 100% {
+    opacity: 0;
+  }
+}
+
+/******************** Image ********************/
+
+#slackin-viewer .image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  opacity: 0;
+  box-shadow: 0 1px 15px rgba(0,0,0,0.75);
+}
+
+#slackin-viewer.active .image {
+  -webkit-animation: image 1.25s 0.2s forwards;
+  -moz-animation: image 1.25s 0.2s forwards;
+  animation: image 1.25s 0.2s forwards;
+  -webkit-animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+  -moz-animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+  animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+}
+
+@-webkit-keyframes image {
+  0%, 75% {
+    opacity: 0;
+  }
+  50.1% {
+    -webkit-transform: scale(0.98);
+    -moz-transform: scale(0.98);
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@-moz-keyframes image {
+  0%, 75% {
+    opacity: 0;
+  }
+  50.1% {
+    -webkit-transform: scale(0.98);
+    -moz-transform: scale(0.98);
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+@keyframes image {
+  0%, 75% {
+    opacity: 0;
+  }
+  50.1% {
+    -webkit-transform: scale(0.98);
+    -moz-transform: scale(0.98);
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+/******************** Description ********************/
+
+#slackin-viewer .description {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #000;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  opacity: 0;
+  background-color: rgba(255,255,255,0.8);
+  visibility: hidden;
+  pointer-events: none;
+}
+
+#slackin-viewer .description.show {
+  opacity: 1;
+}
+
+#slackin-viewer.active .description {
+  -webkit-animation: description 1.25s 0.2s forwards;
+  -moz-animation: description 1.25s 0.2s forwards;
+  animation: description 1.25s 0.2s forwards;
+}
+
+@-webkit-keyframes description {
+  0%, 80% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+
+@-moz-keyframes description {
+  0%, 80% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+
+@keyframes description {
+  0%, 80% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+
+/******************** Control Icons ********************/
+
+#slackin-viewer .control-icons {
+  opacity: 0;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  font-size: 3rem;
+}
+
+#slackin-viewer.active .control-icons {
+  -webkit-animation: controls-icons 1.5s 0.2s forwards;
+  -moz-animation: controls-icons 1.5s 0.2s forwards;
+  animation: controls-icons 1.5s 0.2s forwards;
+}
+
+@-webkit-keyframes controls-icons {
+  0%, 85% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes controls-icons {
+  0%, 85% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes controls-icons {
+  0%, 85% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/******************** Previous ********************/
+
+#slackin-viewer .previous {
+  background-color: rgba(90,191,213,0.75);
+  left: 50%;
+  left: -webkit-calc(50% - 1rem);
+  left: -moz-calc(50% - 1rem);
+  left: calc(50% - 1rem);
+  top: 50%;
+  top: -webkit-calc(50% - 0.5rem);
+  top: -moz-calc(50% - 0.5rem);
+  top: calc(50% - 0.5rem);
+}
+
+#slackin-viewer.active .previous {
+  -webkit-animation: previous 1.25s 0.2s forwards;
+  -moz-animation: previous 1.25s 0.2s forwards;
+  animation: previous 1.25s 0.2s forwards;
+  -webkit-animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+  -moz-animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+  animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+}
+
+@-webkit-keyframes previous {
+  50% {
+    visibility: hidden;
+  }
+  50.1% {
+    visibility: visible;
+    top: 50%;
+    top: -webkit-calc(50% - 0.5rem);
+    top: calc(50% - 0.5rem);
+    left: 50%;
+    left: -webkit-calc(50% - 1rem);
+    left: calc(50% - 1rem);
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: rgba(90,191,213,0.75);
+    border-radius: 0.25rem;
+  }
+  100% {
+    visibility: visible;
+    top: 50%;
+    left: 5rem;
+    width: 4rem;
+    height: 4rem;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 2rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+}
+
+@-moz-keyframes previous {
+  50% {
+    visibility: hidden;
+  }
+  50.1% {
+    visibility: visible;
+    top: 50%;
+    top: -moz-calc(50% - 0.5rem);
+    top: calc(50% - 0.5rem);
+    left: 50%;
+    left: -moz-calc(50% - 1rem);
+    left: calc(50% - 1rem);
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: rgba(90,191,213,0.75);
+    border-radius: 0.25rem;
+  }
+  100% {
+    visibility: visible;
+    top: 50%;
+    left: 5rem;
+    width: 4rem;
+    height: 4rem;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 2rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+}
+
+@keyframes previous {
+  50% {
+    visibility: hidden;
+  }
+  50.1% {
+    visibility: visible;
+    top: 50%;
+    top: -webkit-calc(50% - 0.5rem);
+    top: -moz-calc(50% - 0.5rem);
+    top: calc(50% - 0.5rem);
+    left: 50%;
+    left: -webkit-calc(50% - 1rem);
+    left: -moz-calc(50% - 1rem);
+    left: calc(50% - 1rem);
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: rgba(90,191,213,0.75);
+    border-radius: 0.25rem;
+  }
+  100% {
+    visibility: visible;
+    top: 50%;
+    left: 5rem;
+    width: 4rem;
+    height: 4rem;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 2rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+}
+
+/******************** Next ********************/
+
+#slackin-viewer .next {
+  background-color: rgba(217,0,79,0.75);
+  left: 50%;
+  left: -webkit-calc(50% + 1rem);
+  left: -moz-calc(50% + 1rem);
+  left: calc(50% + 1rem);
+  top: 50%;
+  top: -webkit-calc(50% + 0.5rem);
+  top: -moz-calc(50% + 0.5rem);
+  top: calc(50% + 0.5rem);
+}
+
+#slackin-viewer.active .next {
+  -webkit-animation: next 1.25s 0.2s forwards;
+  -moz-animation: next 1.25s 0.2s forwards;
+  animation: next 1.25s 0.2s forwards;
+  -webkit-animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+  -moz-animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+  animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+}
+
+@-webkit-keyframes next {
+  50% {
+    visibility: hidden;
+  }
+  50.1% {
+    visibility: visible;
+    top: 50%;
+    top: -webkit-calc(50% + 0.5rem);
+    top: calc(50% + 0.5rem);
+    left: 50%;
+    left: -webkit-calc(50% + 1rem);
+    left: calc(50% + 1rem);
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: rgba(217,0,79,0.75);
+    border-radius: 0.25rem;
+  }
+  100% {
+    visibility: visible;
+    top: 50%;
+    left: 100%;
+    left: -webkit-calc(100% - 5rem);
+    left: calc(100% - 5rem);
+    width: 4rem;
+    height: 4rem;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 2rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+}
+
+@-moz-keyframes next {
+  50% {
+    visibility: hidden;
+  }
+  50.1% {
+    visibility: visible;
+    top: 50%;
+    top: -moz-calc(50% + 0.5rem);
+    top: calc(50% + 0.5rem);
+    left: 50%;
+    left: -moz-calc(50% + 1rem);
+    left: calc(50% + 1rem);
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: rgba(217,0,79,0.75);
+    border-radius: 0.25rem;
+  }
+  100% {
+    visibility: visible;
+    top: 50%;
+    left: 100%;
+    left: -moz-calc(100% - 5rem);
+    left: calc(100% - 5rem);
+    width: 4rem;
+    height: 4rem;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 2rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+}
+
+@keyframes next {
+  50% {
+    visibility: hidden;
+  }
+  50.1% {
+    visibility: visible;
+    top: 50%;
+    top: -webkit-calc(50% + 0.5rem);
+    top: -moz-calc(50% + 0.5rem);
+    top: calc(50% + 0.5rem);
+    left: 50%;
+    left: -webkit-calc(50% + 1rem);
+    left: -moz-calc(50% + 1rem);
+    left: calc(50% + 1rem);
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: rgba(217,0,79,0.75);
+    border-radius: 0.25rem;
+  }
+  100% {
+    visibility: visible;
+    top: 50%;
+    left: 100%;
+    left: -webkit-calc(100% - 5rem);
+    left: -moz-calc(100% - 5rem);
+    left: calc(100% - 5rem);
+    width: 4rem;
+    height: 4rem;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 2rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+}
+
+/******************** Close ********************/
+
+#slackin-viewer .close {
+  background-color: rgba(228,154,0,0.75);
+  left: 50%;
+  left: -webkit-calc(50% + 0.5rem);
+  left: -moz-calc(50% + 0.5rem);
+  left: calc(50% + 0.5rem);
+  top: 50%;
+  top: -webkit-calc(50% - 1rem);
+  top: -moz-calc(50% - 1rem);
+  top: calc(50% - 1rem);
+  font-size: 1.25rem;
+}
+
+#slackin-viewer.active .close {
+  -webkit-animation: close 1.25s 0.2s forwards;
+  -moz-animation: close 1.25s 0.2s forwards;
+  animation: close 1.25s 0.2s forwards;
+  -webkit-animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+  -moz-animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+  animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+}
+
+@-webkit-keyframes close {
+  50% {
+    visibility: hidden;
+  }
+  50.1% {
+    visibility: visible;
+    top: 50%;
+    top: -webkit-calc(50% - 1rem);
+    top: calc(50% - 1rem);
+    left: 50%;
+    left: -webkit-calc(50% + 0.5rem);
+    left: calc(50% + 0.5rem);
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: rgba(228,154,0,0.75);
+    border-radius: 0.25rem;
+  }
+  100% {
+    visibility: visible;
+    top: 0;
+    left: 100%;
+    width: 2rem;
+    height: 2rem;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 1rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+}
+
+@-moz-keyframes close {
+  50% {
+    visibility: hidden;
+  }
+  50.1% {
+    visibility: visible;
+    top: 50%;
+    top: -moz-calc(50% - 1rem);
+    top: calc(50% - 1rem);
+    left: 50%;
+    left: -moz-calc(50% + 0.5rem);
+    left: calc(50% + 0.5rem);
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: rgba(228,154,0,0.75);
+    border-radius: 0.25rem;
+  }
+  100% {
+    visibility: visible;
+    top: 0;
+    left: 100%;
+    width: 2rem;
+    height: 2rem;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 1rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+}
+
+@keyframes close {
+  50% {
+    visibility: hidden;
+  }
+  50.1% {
+    visibility: visible;
+    top: 50%;
+    top: -webkit-calc(50% - 1rem);
+    top: -moz-calc(50% - 1rem);
+    top: calc(50% - 1rem);
+    left: 50%;
+    left: -webkit-calc(50% + 0.5rem);
+    left: -moz-calc(50% + 0.5rem);
+    left: calc(50% + 0.5rem);
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: rgba(228,154,0,0.75);
+    border-radius: 0.25rem;
+  }
+  100% {
+    visibility: visible;
+    top: 0;
+    left: 100%;
+    width: 2rem;
+    height: 2rem;
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 1rem;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  }
+}

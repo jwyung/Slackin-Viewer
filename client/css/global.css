@@ -1,0 +1,33 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Lato", san-serif;
+}
+h2 {
+  margin: 0;
+}
+p {
+  margin: 0;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+button {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+.stealth {
+  opacity: 0 !important;
+}
+.exposed {
+  opacity: 1 !important;
+}

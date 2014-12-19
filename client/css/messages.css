@@ -1,0 +1,28 @@
+.messages-container {
+  margin-left: 220px;
+  padding-left: 1.5rem;
+}
+.message {
+  position: relative;
+  margin-top: 0.5rem;
+  padding-left: 3rem;
+}
+.avatar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  background-image: url('https://secure.gravatar.com/avatar/a51708c8f50de40941d2346b5eccbf96.jpg?s=72&d=https%3A%2F%2Fslack.global.ssl.fastly.net%2F8390%2Fimg%2Favatars%2Fava_0015-72.png');
+  background-size: 36px 36px;
+  background-repeat: no-repeat;
+  border-radius: 0.2rem;
+}
+.thumbnail-trigger {
+  cursor: pointer;
+  cursor: -moz-zoom-in;
+  cursor: -webkit-zoom-in;
+}
+.thumbnail-trigger.fetching {
+  cursor: default;
+}

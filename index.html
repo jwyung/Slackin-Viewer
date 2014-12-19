@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title></title>
+  <link href='//fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="client/css/global.css" type="text/css" rel="stylesheet">
+  <link href="client/css/channels.css" type="text/css" rel="stylesheet">
+  <link href="client/css/messages.css" type="text/css" rel="stylesheet">
+  <link href="client/css/slackinViewer.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+
+	<div class="channels-container">
+		<div class="team-menu">
+			<h2 class="team-name">imports</h2>
+		</div>
+		<div class="channels">
+			<h3 class="channel-header">channels</h3>
+			<ul class="channel-list">
+				<li class="channel">
+					<span class="prefix">#</span> bmw
+				</li>
+				<li class="channel active">
+					<span class="prefix">#</span> audi
+				</li>
+				<li class="channel">
+					<span class="prefix">#</span> mercedes
+				</li>
+				<li class="channel">
+					<span class="prefix">#</span> porsche
+				</li>
+				<li class="channel">
+					<span class="prefix">#</span> maserati
+				</li>
+				<li class="channel">
+					<span class="prefix">#</span> mclaren
+				</li>
+				<li class="channel">
+					<span class="prefix">#</span> bentley
+				</li>
+				<li class="channel">
+					<span class="prefix">#</span> ferrari
+				</li>
+				<li class="channel">
+					<span class="prefix">#</span> astonmartin
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<h2 class="current-channel-container">
+		<span class="prefix">#</span>audi
+	</h2>
+
+	<div class="messages-container">
+		<div class="message">
+			<div class="avatar"></div>
+			<h4 class="name">Jonathan Yung</h4>
+			<button class="thumbnail-trigger fetching" type="button">
+				<img class="thumbnail-image fetching" src="" alt="" width="358" height="239">
+			</button>
+		</div>
+	</div>
+
+	<div id="slackin-viewer" class="ui-transition-opacity">
+		<div class="mask"></div>
+		<div class="viewer">
+      <div class="content centered">
+      	<img class="image" src="" alt="">
+      	<p class="description ui-transition-opacity"></p>
+	      <button class="close controls centered ui-transition-opacity" type="button">
+	        <i class="control-icons fa fa-times"></i>
+	      </button>
+      </div>
+			<button class="previous controls centered ui-transition-opacity" type="button">
+        <i class="control-icons fa fa-angle-left"></i>
+      </button>
+			<button class="next controls centered ui-transition-opacity" type="button">
+        <i class="control-icons fa fa-angle-right"></i>
+      </button>
+		</div>
+
+	</div>
+  <script type="text/javascript" src="client/javascript/SlackinViewer.js"></script>
+  <script type="text/javascript" src="client/javascript/messageMedia.js"></script>
+</body>
+</html>
