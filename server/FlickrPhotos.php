@@ -30,17 +30,17 @@ $photos = $data['photoset']['photo'];
 $ret_photos = array();
 
 if (!empty($photos)) {
-	foreach ($photos as $photo) {
-		$ret_photo = array();
-		$src = $photo['url_o'];
+  foreach ($photos as $photo) {
+    $ret_photo = array();
+    $src = $photo['url_o'];
 
-		$ret_photo['src'] = $src;
-		$ret_photo['title'] = $photo['title'];
+    $ret_photo['src'] = $src;
+    $ret_photo['title'] = $photo['title'];
 
-		$ret_photos[] = $ret_photo;
+    $ret_photos[] = $ret_photo;
 
-		unset($ret_photo);
-	}
+    unset($ret_photo);
+  }
 }
 
 echo json_encode($ret_photos, JSON_FORCE_OBJECT);
