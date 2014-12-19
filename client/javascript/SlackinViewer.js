@@ -55,7 +55,7 @@ SlackinViewer.prototype.requestPhotoSet = function() {
       request = new XMLHttpRequest();
 
   request.onreadystatechange = function() {
-    if (request.readyState == 4 && request.status == 200) {
+    if (request.readyState === 4 && request.status === 200) {
       self.items = JSON.parse(request.responseText);
       self.length = Object.keys(self.items).length;
       self.updateThumbnail();
